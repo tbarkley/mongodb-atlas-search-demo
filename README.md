@@ -17,9 +17,9 @@ You should have at least the free tier of MongoDB Atlas, the sample data (link b
 
 ### Backend setup
 ```
-cd /backend
-npm install
-mv .env-example .env
+$ cd /backend
+$ npm install
+$ mv .env-example .env
 ```
 Set the MongoDB Atlas environment variables inside your newly created .env file
 ```
@@ -29,13 +29,13 @@ ATLAS_DEFAULT_COLLECTION=movies
 ```
 
 ```
-npm run dev
+$ npm run dev
 ```
 
 ### Frontend setup
 Note: uses PrimeVue free template https://github.com/primefaces/sakai-vue
 ```
-cd /frontend
-npm install
-npm run serve
+$ cd /frontend
+$ npm install
+$ npm run serve
 ```
