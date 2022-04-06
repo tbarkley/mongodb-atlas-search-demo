@@ -1,6 +1,9 @@
 # MongoDB Atlas Search + VueJS 3 + PrimeVue 3
 This is a simple MongoDB Atlas search demo using Vue 3/PrimeVue 3, Node/Express and the sample_mflix sample data provided by MongoDB (sample data importer is included in the Atlas UI!).
 
+## What you'll create
+![](sample_mflix.gif)
+
 ## Prerequisites
 You should have at least the free tier of MongoDB Atlas, the sample data (link below) loaded to your cluster and a simple search index created. It's very quick to setup and the Atlas UI is very intuitive and easy to use!
 
