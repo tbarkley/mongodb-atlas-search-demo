@@ -1,5 +1,7 @@
 <template>
+    
     <div class="surface-0 overflow-hidden">
+        <movie-details :display="showMovieDetails" :movie="selectedMovie" :toggleDisplay="toggleVisible"/>
         <div class="py-4 px-4 mx-0 md:mx-4 lg:mx-12 lg:px-12 flex align-items-center justify-content-between relative lg:static">
             <router-link to="/" class="flex align-items-center">
                 <img :src="'layout/images/mflix_logo.svg'" alt="MongoDB Logo" height="25" class="mr-0 lg:mr-2">
@@ -50,7 +52,7 @@
 
                 <div class="movie-card col-12 md:col-12 lg:col-3 p-0 lg:pr-5 lg:pb-5 mt-2 lg:mt-0" v-for="movie in movies" :key="movie._id" >
                       
-                    <Card class="" style="width: 20em;" :style="{'height':'15em', 'max-height':'20em','background-image': 'url(' + getMoviePoster(movie) + ')', 'background-size': 'cover','background-position' : 'top', 'background-color':'#2c902f'}">
+                    <Card @click="showMovie(movie)" class="" style="width: 20em;" :style="{'height':'15em', 'max-height':'20em','background-image': 'url(' + getMoviePoster(movie) + ')', 'background-size': 'cover','background-position' : 'top', 'background-color':'#2c902f'}">
                         <template #content>
                             <div class="movie-details">
                         <h5>{{movie.title}}</h5>
@@ -124,20 +126,25 @@
 <script>
 
 import MovieService from '../service/MovieService';
+import MovieDetails from '../components/MovieDetails.vue';
 
 export default {
     data() {
         return {
             movies : [],
             query : '',
-            delay : 500
+            delay : 500,
+            selectedMovie : null,
+            showMovieDetails : false,
+            show: false
         }
+    },
+    components: {
+        MovieDetails
     },
     timeout:null,
     movieService : null,
     mounted() {
-        
-
         if(this.$route.path === "/search") {
             this.search();
         } else {
@@ -148,6 +155,15 @@ export default {
 		this.movieService = new MovieService();
 	},
     methods: {
+        toggleVisible(value) { 
+            if (!value) { 
+                this.showMovieDetails = false; 
+            } 
+        },
+        showMovie(movie) {
+            this.selectedMovie = movie;
+            this.showMovieDetails = !this.showMovieDetails;
+        },
         browse(lim, ski) {
 
             let skip  = ski || this.$route.query.skip;
