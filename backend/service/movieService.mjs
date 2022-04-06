@@ -74,9 +74,9 @@ export default class MovieService {
     async search(q="", limit=10, skip=0, includeFacets=false) {
 
         try {
-            limit = parseInt(request.query.limit);
-            skip  = parseInt(request.query.skip);
-            includeFacets = request.query.includeFacets !== undefined ? request.query.includeFacets : false;
+            limit = parseInt(limit);
+            skip  = parseInt(skip);
+            includeFacets = includeFacets !== undefined ? includeFacets : false;
         } catch(e) {
             throw new Error("Invalid search parameters used:" + e.message);
         }

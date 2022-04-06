@@ -50,7 +50,7 @@
 
                 <div class="movie-card col-12 md:col-12 lg:col-3 p-0 lg:pr-5 lg:pb-5 mt-2 lg:mt-0" v-for="movie in movies" :key="movie._id" >
                       
-                    <Card class="" style="width: 20em;" :style="{'height':'15em', 'max-height':'20em','background-image': 'url(' + getMoviePoster(movie) + ')', 'background-size': 'cover','background-position' : 'top'}">
+                    <Card class="" style="width: 20em;" :style="{'height':'15em', 'max-height':'20em','background-image': 'url(' + getMoviePoster(movie) + ')', 'background-size': 'cover','background-position' : 'top', 'background-color':'#2c902f'}">
                         <template #content>
                             <div class="movie-details">
                         <h5>{{movie.title}}</h5>
