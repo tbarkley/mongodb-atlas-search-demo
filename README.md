@@ -18,7 +18,7 @@ npm install
 mv .env-example .env
 npm run dev
 ```
-Set the MongoDB Atlas environment variables
+Set the MongoDB Atlas environment variables inside your newly created .env file
 ```
 ATLAS_URI=mongodb+srv://mongodb:<password>@<clustername>.<host>.mongodb.net
 ATLAS_DEFAULT_DB=sample_mflix
