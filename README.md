@@ -20,13 +20,16 @@ You should have at least the free tier of MongoDB Atlas, the sample data (link b
 cd /backend
 npm install
 mv .env-example .env
-npm run dev
 ```
 Set the MongoDB Atlas environment variables inside your newly created .env file
 ```
 ATLAS_URI=mongodb+srv://mongodb:<password>@<clustername>.<host>.mongodb.net
 ATLAS_DEFAULT_DB=sample_mflix
 ATLAS_DEFAULT_COLLECTION=movies
+```
+
+```
+npm run dev
 ```
 
 ### Frontend setup
