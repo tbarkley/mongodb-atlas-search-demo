@@ -43,14 +43,7 @@ export default class MovieRepository {
     let query = [
       { $match: {} },
       {
-        $project: {
-          title: 1,
-          genres: 1,
-          plot: 1,
-          cast: 1,
-          year: 1,
-          poster: 1
-        }
+        $project: this._getDefaultProjection()
       },
 
       {
@@ -85,15 +78,7 @@ export default class MovieRepository {
         "genres": genre
       }
     }, {
-      $project: {
-        title: 1,
-        genres: 1,
-        cast: 1,
-        year: 1,
-        plot: 1,
-        poster: 1,
-        score: { $meta: "searchScore" }
-      }
+      $project: this._getDefaultProjection()
     },
     {
       $sort: {
@@ -125,6 +110,21 @@ export default class MovieRepository {
     } catch (e) {
       console.error(e);
     }
+  }
+
+  _getDefaultProjection() {
+    return {
+      title: 1,
+      genres: 1,
+      cast: 1,
+      runtime : 1,
+      directors : 1,
+      rated:1,
+      year: 1,
+      plot: 1,
+      poster: 1,
+      score: { $meta: "searchScore" }
+    };
   }
 
   /**
@@ -161,15 +161,7 @@ export default class MovieRepository {
       }
     },
     {
-      $project: {
-        title: 1,
-        genres: 1,
-        plot: 1,
-        cast: 1,
-        year: 1,
-        poster: 1,
-        score: { $meta: "searchScore" }
-      }
+      $project:this._getDefaultProjection()
     }, {
       $sort: {
         score: -1
