@@ -72,8 +72,6 @@ export default class MovieService {
      * @returns {Array} - Movies search results
      */
     async search(q="", limit=10, skip=0, includeFacets=false) {
-        
-        let limit, skip, includeFacets;
 
         try {
             limit = parseInt(request.query.limit);
