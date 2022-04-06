@@ -16,25 +16,25 @@ You should have at least the free tier of MongoDB Atlas, the sample data (link b
 ## Project setup
 
 ### Backend setup
-```
+```console
 $ cd /backend
 $ npm install
 $ mv .env-example .env
 ```
 Set the MongoDB Atlas environment variables inside your newly created .env file
-```
+```bash
 ATLAS_URI=mongodb+srv://mongodb:<password>@<clustername>.<host>.mongodb.net
 ATLAS_DEFAULT_DB=sample_mflix
 ATLAS_DEFAULT_COLLECTION=movies
 ```
 
-```
+```console
 $ npm run dev
 ```
 
 ### Frontend setup
 Note: uses PrimeVue free template https://github.com/primefaces/sakai-vue
-```
+```console
 $ cd /frontend
 $ npm install
 $ npm run serve
