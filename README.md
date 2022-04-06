@@ -26,6 +26,7 @@ ATLAS_DEFAULT_COLLECTION=movies
 ```
 
 ### Frontend setup
+Note: uses PrimeVue free template https://github.com/primefaces/sakai-vue
 ```
 cd /frontend
 npm install
