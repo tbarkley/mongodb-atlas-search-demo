@@ -1,11 +1,10 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-import App from './App.vue';
 
 const routes = [
     {
         path: '/',
-        name: 'app',
-        component: App,
+        name: 'default',
+        component: () => import('./pages/Browse.vue')
     },
     {
         path: '/browse',

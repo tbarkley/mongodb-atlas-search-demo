@@ -2,7 +2,7 @@
 <Dialog 
      id="movie_modal"
      v-if="movie"
-     :style="{'min-width':'50vw', 'max-width':'55vw', 'min-height':'80vh', 'background-image': 'url(' + getMoviePoster() + ')', 'background-size': 'cover','background-position' : 'top', 'background-color':'#2c902f'}"
+     :style="{'min-width':'50vw', 'max-width':'55vw', 'min-height':'90vh', 'background-image': 'url(' + getMoviePoster() + ')', 'background-size': 'cover','background-position' : 'center', 'background-color':'#2c902f'}"
     :visible="display"
 
     :dismissableMask="true"
@@ -33,7 +33,7 @@
             <span class="label">Directors:</span> {{displayMeta('directors')}}<br><br>
             <span class="label">Cast:</span> {{displayMeta('cast')}}<br><br>
             <span class="label">Genres:</span> {{displayMeta('genres')}}<br><br>
-            <span class="label">Maturity Rating:</span> {{displayMeta('rated')}}<br><br>
+            <span class="label">Maturity Rating:</span> <span v-if="movie.rated" class="meta rating">{{movie.rated}}</span><br><br>
         </div>
     </div>
 <!-- 
@@ -61,9 +61,15 @@ export default {
             return this.movie.poster;
         },
         displayMeta(key) {
+            
             if(!this.movie[key]) return;
-            if(this.movie[key].length < 1) return this.movie[key][0];
-            return this.movie[key].join(",");
+
+            if(this.movie[key].length < 1|| !this.movie[key].join) {
+                return this.movie[key][0];
+            } else {
+                return this.movie[key].join(", ");
+            }
+            
         },
         formatRunTime() {
             if(!this.movie.runtime) return;

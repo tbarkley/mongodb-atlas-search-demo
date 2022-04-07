@@ -94,9 +94,6 @@ import TreeSelect from 'primevue/treeselect';
 import TreeTable from 'primevue/treetable';
 import TriStateCheckbox from 'primevue/tristatecheckbox';
 
-import CodeHighlight from './AppCodeHighlight';
-import BlockViewer from './BlockViewer';
-
 router.beforeEach(function(to, from, next) {
     window.scrollTo(0, 0);
     next();
@@ -113,7 +110,6 @@ app.use(router);
 
 app.directive('tooltip', Tooltip);
 app.directive('ripple', Ripple);
-app.directive('code', CodeHighlight);
 app.directive('badge', BadgeDirective);
 app.directive('styleclass', StyleClass);
 
@@ -195,7 +191,5 @@ app.component('Tree', Tree);
 app.component('TreeSelect', TreeSelect);
 app.component('TreeTable', TreeTable);
 app.component('TriStateCheckbox', TriStateCheckbox);
-
-app.component('BlockViewer', BlockViewer);
 
 app.mount('#app');

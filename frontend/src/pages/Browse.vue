@@ -225,8 +225,8 @@
               'max-height': '20em',
               'background-image': 'url(' + getMoviePoster(movie) + ')',
               'background-size': 'cover',
-              'background-position': 'top',
-              'background-color': '#2c902f',
+              'background-position': 'center',
+              'background-color': '#222',
             }"
           >
             <template #content>
