@@ -39,9 +39,10 @@ export default class MovieRepository {
    * @param limit {number}
    * @returns {Array} - Array of movies
    */
-  async getAllMovies(skip = 0, limit = 10) {
+  async getAllMovies(skip = 0, limit = 20) {
     let query = [
       { $match: {} },
+      { $skip: skip }, { $limit: limit },
       {
         $project: this._getDefaultProjection()
       },
@@ -122,6 +123,7 @@ export default class MovieRepository {
       rated:1,
       year: 1,
       plot: 1,
+      fullplot : 1,
       poster: 1,
       score: { $meta: "searchScore" }
     };
@@ -135,7 +137,7 @@ export default class MovieRepository {
   async getMovieById(id = null) {
     let query = { _id: ObjectId(id) };
     let result = this._dbConnection.collection.findOne(query);
-    console.log(result);
+    return result;
   };
 
   /**

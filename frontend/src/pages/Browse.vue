@@ -225,7 +225,7 @@
               'max-height': '20em',
               'background-image': 'url(' + getMoviePoster(movie) + ')',
               'background-size': 'cover',
-              'background-position': 'center',
+              'background-position': 'top',
               'background-color': '#222',
             }"
           >
@@ -508,7 +508,7 @@ export default {
 }
 
 .p-dialog-header {
-    background: none !important;
+    background-color: #000000b0 !important;
 }
 
 .p-dialog .p-dialog-content {

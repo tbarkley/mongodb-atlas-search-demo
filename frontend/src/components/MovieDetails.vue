@@ -8,9 +8,7 @@
     :dismissableMask="true"
     @update:visible="toggleDisplay"
 >
-    <template #header>
-&nbsp;
-	</template>
+
     
     <div class="mask" style="background-color: rgba(0, 0, 0, 0.9);
     position: relative;
@@ -24,16 +22,16 @@
         class="flex
         align-items-top
         justify-content-between">
-        <div style="padding:1em;">
+        <div style="padding:1em;max-width:35em;">
             <span class="meta">{{movie.year}}</span> <span v-if="movie.rated" class="meta rating">{{movie.rated}}</span><span class="meta">{{formatRunTime()}}</span>
             <h3>{{movie.title}}</h3>
-            <span class="meta">{{movie.plot}}</span>
+            <span v-if="movie.fullplot" class="meta">{{movie.fullplot}}</span><span v-else>{{movie.plot}}</span>
         </div>
         <div style="padding:1em;">
             <span class="label">Directors:</span> {{displayMeta('directors')}}<br><br>
             <span class="label">Cast:</span> {{displayMeta('cast')}}<br><br>
             <span class="label">Genres:</span> {{displayMeta('genres')}}<br><br>
-            <span class="label">Maturity Rating:</span> <span v-if="movie.rated" class="meta rating">{{movie.rated}}</span><br><br>
+            <span class="label">Maturity Rating:</span> <span v-if="movie.rated" class="meta rating">{{movie.rated}}</span><span v-else>N/A</span><br><br>
         </div>
     </div>
 <!-- 
@@ -64,7 +62,7 @@ export default {
             
             if(!this.movie[key]) return;
 
-            if(this.movie[key].length < 1|| !this.movie[key].join) {
+            if(this.movie[key].length < 1 || !this.movie[key].join) {
                 return this.movie[key][0];
             } else {
                 return this.movie[key].join(", ");
@@ -76,7 +74,7 @@ export default {
             let formatLocal = (str)=>moment.utc(moment.duration(this.movie.runtime, "minutes").asMilliseconds()).format(str)
             let hours = formatLocal("H") + "h"
             let mins  = formatLocal("m") + "m"
-            if(hours == "0") return `${mins}`;
+            if(hours == "0h") return `${mins}`;
             return `${hours} ${mins}`;
         }
     }
