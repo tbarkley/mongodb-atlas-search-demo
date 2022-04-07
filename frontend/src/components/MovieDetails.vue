@@ -62,14 +62,16 @@ export default {
         },
         displayMeta(key) {
             if(!this.movie[key]) return;
-            if(!this.movie[key].join) return key;
+            if(this.movie[key].length < 1) return this.movie[key][0];
             return this.movie[key].join(",");
         },
         formatRunTime() {
+            if(!this.movie.runtime) return;
             let formatLocal = (str)=>moment.utc(moment.duration(this.movie.runtime, "minutes").asMilliseconds()).format(str)
             let hours = formatLocal("H") + "h"
             let mins  = formatLocal("m") + "m"
-           return `${hours} ${mins}`;
+            if(hours == "0") return `${mins}`;
+            return `${hours} ${mins}`;
         }
     }
 }
