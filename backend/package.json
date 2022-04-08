@@ -1,4 +1,14 @@
 {
+  "name": "mongodb-atlas-search-vue",
+	"version": "0.2.0-alpha",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tbarkley/mongodb-atlas-search-demo.git"
+	},
+	"license": "MIT",
+  "scripts": {
+    "dev": "node --experimental-modules index.js"
+  },
   "dependencies": {
     "body-parser": "^1.19.2",
     "cors": "^2.8.5",
@@ -7,8 +17,5 @@
     "mongodb": "^4.4.1"
   },
   "type": "module",
-  "main": "index.js",
-  "scripts": {
-    "dev": "node --experimental-modules index.js"
-  }
+  "main": "index.js"
 }
