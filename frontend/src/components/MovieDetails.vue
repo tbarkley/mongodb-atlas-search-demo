@@ -62,7 +62,7 @@ export default {
             
             if(!this.movie[key]) return;
 
-            if(this.movie[key].length < 1 || !this.movie[key].join) {
+            if(this.movie[key].length == 1 || !this.movie[key].join) {
                 return this.movie[key][0];
             } else {
                 return this.movie[key].join(", ");
