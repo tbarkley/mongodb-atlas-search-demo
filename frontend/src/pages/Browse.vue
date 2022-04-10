@@ -432,36 +432,36 @@ export default {
           this.$router.push("/browse");
           return this.browse();
         });
-      }
+      } else {
+           searchParams.set("q", this.query);
 
-      searchParams.set("q", this.query);
+        let limit = 20,
+            skip = 0;
 
-      let limit = 20,
-        skip = 0;
+        if (this.$route.query.skip && this.$route.query.limit) {
+            limit = parseInt(this.$route.query.limit);
+            skip = parseInt(this.$route.query.skip);
+        }
 
-      if (this.$route.query.skip && this.$route.query.limit) {
-        limit = parseInt(this.$route.query.limit);
-        skip = parseInt(this.$route.query.skip);
-      }
+        if (window.history.replaceState) {
+            const url =
+            window.location.protocol +
+            "//" +
+            window.location.host +
+            window.location.pathname +
+            "#/search?" +
+            searchParams.toString() +
+            "&skip=" +
+            skip +
+            "&limit=" +
+            limit;
 
-      if (window.history.replaceState) {
-        const url =
-          window.location.protocol +
-          "//" +
-          window.location.host +
-          window.location.pathname +
-          "#/search?" +
-          searchParams.toString() +
-          "&skip=" +
-          skip +
-          "&limit=" +
-          limit;
+            this.$router.push(url);
 
-        this.$router.push(url);
-
-        return this.$nextTick(() => {
-          return this.search();
-        });
+            return this.$nextTick(() => {
+            return this.search();
+            });
+        }
       }
     },
     search() {
@@ -472,6 +472,8 @@ export default {
         let skip = this.$route.query.skip;
         let limit = this.$route.query.limit;
         let q = this.$route.query.q;
+
+        if(q.trim() === "") return;
 
         this.movieService.search(q, limit, skip, true).then((data) => {
           this.movies = data;
